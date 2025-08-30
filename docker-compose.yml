@@ -4,11 +4,10 @@ services:
   whoami:
     image: containous/whoami    
     labels:
-  labels:
-    - "traefik.enable=true"
-    - "traefik.http.routers.whoami.entrypoints=web"
-    - "traefik.http.routers.whoami.rule=PathPrefix(`/whoami`)"
-    - "traefik.http.services.whoami.loadbalancer.server.port=80"
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.routers.whoami.rule=PathPrefix(`/whoami`)"
+      - "traefik.http.services.whoami.loadbalancer.server.port=80"
     networks:
       - traefik
     deploy:
