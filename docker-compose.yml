@@ -5,8 +5,8 @@ services:
     image: containous/whoami    
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.${SERVICE_NAME}-http.entrypoints=web"
-      - "traefik.http.routers.${SERVICE_NAME}-http.rule=Host(`${DOMAIN_NAME}`)"
+      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.routers.whoami.rule=Path(`/whoami`)"
     networks:
       - traefik
     deploy:
