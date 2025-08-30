@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  whoami:
+    image: containous/whoami    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${SERVICE_NAME}-http.entrypoints=web"
+      - "traefik.http.routers.${SERVICE_NAME}-http.rule=Host(`${DOMAIN_NAME}`)"
+    networks:
+      - traefik
+    deploy:
+      replicas: 1
+
+networks:
+  traefik:
+    external: true
