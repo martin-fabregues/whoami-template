@@ -15,7 +15,7 @@ services:
     logging:
       driver: loki
       options:
-        loki-url: "http://logging_loki:3100/loki/api/v1/push"
+        loki-url: "http://192.168.100.178:3100/loki/api/v1/push"
         loki-external-labels: "swarm_stack=whoami"
           
 networks:
