@@ -14,12 +14,12 @@ services:
         - "traefik.http.services.whoami.loadbalancer.server.port=80"
     logging:
       driver: loki
-      options:
-        loki-url: "http://logging_loki:3100/loki/api/v1/push"
-        loki-external-labels: |
-          swarm_service={{.Service.Name}}
-          swarm_task={{.Task.Slot}}
-          container_name={{.Name}}     
+       options:
+         loki-url: "http://logging_loki:3100/loki/api/v1/push"
+         loki-external-labels: |
+           swarm_service={{.Service.Name}}
+           swarm_task={{.Task.Slot}}
+           container_name={{.Name}}   
 networks:
   traefik:
     external: true
