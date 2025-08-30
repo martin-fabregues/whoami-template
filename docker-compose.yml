@@ -16,10 +16,8 @@ services:
       driver: loki
       options:
         loki-url: "http://logging_loki:3100/loki/api/v1/push"
-        loki-external-labels: |
-          swarm_service={{.Service.Name}}
-          swarm_task={{.Task.Slot}}
-          container_name={{.Name}}   
+        loki-external-labels: "swarm_stack=whoami"
+          
 networks:
   traefik:
     external: true
