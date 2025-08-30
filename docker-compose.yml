@@ -2,16 +2,16 @@ version: '3.8'
 
 services:
   whoami:
-    image: containous/whoami    
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.whoami.entrypoints=web"
-      - "traefik.http.routers.whoami.rule=PathPrefix(`/whoami`)"
-      - "traefik.http.services.whoami.loadbalancer.server.port=80"
+    image: containous/whoami       
     networks:
       - traefik
     deploy:
       replicas: 1
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.whoami.entrypoints=web"
+        - "traefik.http.routers.whoami.rule=PathPrefix(`/whoami`)"
+        - "traefik.http.services.whoami.loadbalancer.server.port=80"
     logging:
       driver: loki
       options:
