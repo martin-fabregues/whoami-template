@@ -5,6 +5,7 @@ services:
     image: containous/whoami       
     networks:
       - traefik
+      - loki-internal
     deploy:
       replicas: 1
       labels:
@@ -15,9 +16,11 @@ services:
     logging:
       driver: loki
       options:
-        loki-url: "http://192.168.100.178:3100/loki/api/v1/push"
+        loki-url: "http://loki-stack_loki:3100/loki/api/v1/push"
         loki-external-labels: "swarm_stack=whoami"
           
 networks:
   traefik:
+    external: true
+  loki-internal:
     external: true
