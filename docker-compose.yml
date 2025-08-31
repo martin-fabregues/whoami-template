@@ -5,6 +5,7 @@ services:
     image: containous/whoami
     networks:
       - traefik      
+      - loki-stack_loki-internal
     deploy:
       replicas: 1
     labels:
@@ -22,3 +23,5 @@ networks:
   traefik:
     external: true  
     name: traefik
+  loki-stack_loki-internal:
+    external: true
