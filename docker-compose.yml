@@ -9,15 +9,13 @@ services:
       replicas: 1
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.entrypoints=web"
-      - "traefik.http.routers.whoami.rule=PathPrefix(`/whoami`)"
-      - "traefik.http.services.whoami.loadbalancer.server.port=80"
+      - "traefik.http.routers.${SERVICE_NAME}.entrypoints=web"
+      - "traefik.http.routers.${SERVICE_NAME}.rule=PathPrefix(`/whoami`)"
+      - "traefik.http.services.${SERVICE_NAME}.loadbalancer.server.port=80"
     logging:
       driver: loki
       options:
-        loki-url: "http://192.168.100.178:3100/loki/api/v1/push"
-        loki-external-labels: "swarm_stack=whoami"
-          
+        loki-url: ${LOKI_URL}          
 networks:
   traefik:
     external: true  
