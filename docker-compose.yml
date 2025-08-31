@@ -15,7 +15,8 @@ services:
     logging:
       driver: loki
       options:
-        loki-url: ${LOKI_URL}          
+        loki-url: ${LOKI_URL}   
+        loki-external-labels: "swarm_stack=${SERVICE_NAME}"
 networks:
   traefik:
     external: true  
