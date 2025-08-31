@@ -4,8 +4,7 @@ services:
   whoami:
     image: containous/whoami       
     networks:
-      - traefik
-      - loki-stack_loki-internal
+      - traefik      
     deploy:
       replicas: 1
       labels:
@@ -21,6 +20,4 @@ services:
           
 networks:
   traefik:
-    external: true
-  loki-stack_loki-internal:
-    external: true
+    external: true  
