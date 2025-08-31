@@ -7,6 +7,9 @@ services:
       - traefik      
     deploy:
       replicas: 1
+      placement:
+        constraints: ["${NODE}"]
+          - node.hostname == worker2
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.${SERVICE_NAME}.entrypoints=web"
